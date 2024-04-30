@@ -5,30 +5,46 @@ using namespace std;
 
 /* Type your code here */
 
-ItemToPurchase::ItemToPurchase(string name, int price, int qty){
-  itemName = name;
-  ItemPrice = price;
-  itemQuantity = qty;
+ItemToPurchase::ItemToPurchase(string name, string description, int price, int quantity)
+{
+    itemName = name;
+    itemDescription = description;
+    itemPrice = price;
+    itemQuantity = quantity;
 }
 
 // setters
-void ItemToPurchase::SetName(string name){
-  itemName = name;
+void ItemToPurchase::SetName(string name)
+{
+    itemName = name;
 }
-void ItemToPurchase::SetPrice(int price){
-  ItemPrice = price;
+void ItemToPurchase::SetDescription(string description)
+{
+    itemDescription = description;
 }
-void ItemToPurchase::SetQuantity(int qty){
-  itemQuantity = qty;
+void ItemToPurchase::SetPrice(int price)
+{
+    itemPrice = price;
+}
+void ItemToPurchase::SetQuantity(int quantity)
+{
+    itemQuantity = quantity;
 }
 
 // getters
-string ItemToPurchase::GetName(){
-  return itemName;
+string ItemToPurchase::GetName() const
+{
+    return itemName;
 }
-int ItemToPurchase::GetPrice(){
-  return ItemPrice;
+string ItemToPurchase::GetDescription() const
+{
+    return itemDescription;
 }
-int ItemToPurchase::GetQuantity(){
-  return itemQuantity;
+int ItemToPurchase::GetPrice() const
+{
+    return itemPrice;
+}
+int ItemToPurchase::GetQuantity() const
+{
+    return itemQuantity;
 }
