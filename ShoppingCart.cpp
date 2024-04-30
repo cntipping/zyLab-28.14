@@ -53,7 +53,11 @@ int ShoppingCart::GetNumItemsInCart(){
     return cartItems.size();
 }
 double ShoppingCart::GetCostOfCart(){
-    
+    double total = 0;
+    for(i = 0; i < cartItems.size(); i++){
+        total += cartItems[i].GetQuantity() * cartItems[i].GetPrice();
+    }
+    return total;
 }
       
 void ShoppingCart::PrintTotal(){
