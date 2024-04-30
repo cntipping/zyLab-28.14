@@ -57,8 +57,20 @@ double ShoppingCart::GetCostOfCart(){
 }
       
 void ShoppingCart::PrintTotal(){
-
+    cout << GetCustomerName() << "'s Shopping Cart - " << GetDate() << endl;
+    cout << "Number of Items: " << GetNumItemsInCart() << endl;
+    cout << endl;
+    for(i = 0; i < cartItems.size(); i++){
+        cartItems[i].PrintItemCost();
+    }
+    cout << "Total: " << GetCostOfCart();
 }
-void ShoppingCart::PrintDescriptions(){
 
+void ShoppingCart::PrintDescriptions(){
+    cout << GetCustomerName() << "'s Shopping Cart - " << GetDate() << endl;
+    cout << endl;
+    cout << "Item Descriptions" << endl;
+    for(i =0; i < cartItems.size(); i++){
+        cartItems[i].PrintDescriptions();
+    }
 }
