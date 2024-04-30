@@ -31,6 +31,7 @@ class ShoppingCart {
       string customerName;
       string currentDate;
       vector<ItemToPurchase> cartItems;
+      unsigned int i;
 };
 
 #endif
