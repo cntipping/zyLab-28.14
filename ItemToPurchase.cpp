@@ -8,6 +8,7 @@ using namespace std;
 ItemToPurchase::ItemToPurchase(string name, string description, int price, int quantity)
 {
     itemName = name;
+    description = "none";
     itemDescription = description;
     itemPrice = price;
     itemQuantity = quantity;
@@ -47,4 +48,19 @@ int ItemToPurchase::GetPrice() const
 int ItemToPurchase::GetQuantity() const
 {
     return itemQuantity;
+}
+
+// Print funcitons
+
+void ItemToPurchase::PrintItemCost()
+{
+    int itemTotal = itemQuantity * itemPrice;
+    cout << itemName << " "
+         << itemQuantity << " @ $"
+         << itemPrice << " = "
+         << itemTotal << endl;
+}
+void ItemToPurchase::PrintItemDescription()
+{
+    cout << itemName << ": " << itemDescription << endl;
 }
