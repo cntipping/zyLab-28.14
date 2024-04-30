@@ -21,10 +21,14 @@ string ShoppingCart::GetDate() const{
 }
 
 void ShoppingCart::AddItem(ItemToPurchase item){
-    
+    cartItems.push_back(item);
 }
 void ShoppingCart::RemoveItem(string name){
-
+    for(i = 0; i < cartItems.size(); i++){
+        if(cartItems[i].GetName() == name){
+            cartItems.push_back(cartItems.at(i));
+        }
+    }
 }
       
 void ShoppingCart::ModifyItem(ItemToPurchase item){
@@ -32,10 +36,10 @@ void ShoppingCart::ModifyItem(ItemToPurchase item){
 }
       
 int ShoppingCart::GetNumItemsInCart(){
-
+    return cartItems.size();
 }
 double ShoppingCart::GetCostOfCart(){
-
+    
 }
       
 void ShoppingCart::PrintTotal(){
