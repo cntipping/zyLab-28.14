@@ -32,7 +32,21 @@ void ShoppingCart::RemoveItem(string name){
 }
       
 void ShoppingCart::ModifyItem(ItemToPurchase item){
-
+    if(cartItems[item]){
+        if(cartItems[item].GetDescription() != "none" &&
+        cartItems[item].GetPrice() != 0 &&
+        cartItems[item].GetQuantity() != 0){
+            cin >> itemDescription;
+            cartItems[item].SetDescription(itemDescription);
+            cin >> itemPrice;
+            cartItems[item].SetPrice(itemPrice);
+            cin >> itemQuantity;
+            cartItems[item].SetQuantity(itemQuantity);
+        }
+    }
+    else{
+        cout << "Item not found in cart. Nothing modified."
+    }
 }
       
 int ShoppingCart::GetNumItemsInCart(){
