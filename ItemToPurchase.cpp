@@ -4,11 +4,17 @@ using namespace std;
 #include "ItemToPurchase.h"
 
 /* Type your code here */
+ItemToPurchase::ItemToPurchase()
+{
+    itemName = "none";
+    itemDescription = "none";
+    itemPrice = 0;
+    itemQuantity = 0;
+}
 
 ItemToPurchase::ItemToPurchase(string name, string description, int price, int quantity)
 {
     itemName = name;
-    description = "none";
     itemDescription = description;
     itemPrice = price;
     itemQuantity = quantity;
