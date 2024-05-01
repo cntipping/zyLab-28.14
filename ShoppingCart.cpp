@@ -39,33 +39,34 @@ void ShoppingCart::RemoveItem(string name){
 }
       
 void ShoppingCart::ModifyItem(ItemToPurchase item){
+    string returnStatement;
     for(i = 0; i < cartItems.size(); i++){
         ItemToPurchase& currItem = cartItems.at(i);
 
         if(cartItems.at(i).GetName() == item.GetName() ){
             if(item.GetDescription() != "none"){
                 currItem.SetDescription(item.GetDescription());
-            }
-            else if(item.GetPrice() != 0){
-                currItem.SetPrice(item.GetPrice());
-            }
-            else if(item.GetQuantity() != 0){
-                currItem.SetQuantity(item.GetQuantity());
+                }
+                else if(item.GetPrice() != 0){
+                    currItem.SetPrice(item.GetPrice());
+                }
+                else if(item.GetQuantity() != 0){
+                    currItem.SetQuantity(item.GetQuantity());
+                }   
             }
             else{
-                cout << "Item not found in cart. Nothing modified." << endl;
+                returnStatement = "Item not found in cart. Nothing modified.";
             }
         }
-    }
-        
+    cout << returnStatement << endl << endl;
 }
       
 int ShoppingCart::GetNumItemsInCart(){
-    int total = 0;
-    for(ItemToPurchase item : cartItems){
-        total += item.GetQuantity();
+    int totalQuantity = 0;
+    for(i = 0; i < cartItems.size(); i++){
+        totalQuantity += cartItems[i].GetQuantity();
     }
-    return total;
+    return totalQuantity;
 }
 double ShoppingCart::GetCostOfCart(){
     double total = 0;
@@ -95,6 +96,7 @@ void ShoppingCart::PrintTotal(){
 
 void ShoppingCart::PrintDescriptions(){
     if(!cartItems.empty()){
+        cout << "OUTPUT ITEMS' DESCRIPTION" << endl;
         cout << GetCustomerName() << "'s Shopping Cart - " << GetDate() << endl;
         cout << endl;
         cout << "Item Descriptions" << endl;
