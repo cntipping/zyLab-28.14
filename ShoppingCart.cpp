@@ -3,7 +3,7 @@
 using namespace std;
 
 #include "ShoppingCart.h"
-#include "ItemToPurchase.cpp"
+#include "ItemToPurchase.h"
 
 ShoppingCart::ShoppingCart(){
     customerName = "none";
@@ -40,15 +40,17 @@ void ShoppingCart::RemoveItem(string name){
       
 void ShoppingCart::ModifyItem(ItemToPurchase item){
     for(i = 0; i < cartItems.size(); i++){
+        ItemToPurchase& currItem = cartItems.at(i);
+
         if(cartItems.at(i).GetName() == item.GetName() ){
             if(item.GetDescription() != "none"){
-                item.SetDescription(item.GetDescription());
+                currItem.SetDescription(item.GetDescription());
             }
             else if(item.GetPrice() != 0){
-                item.SetPrice(item.GetPrice());
+                currItem.SetPrice(item.GetPrice());
             }
             else if(item.GetQuantity() != 0){
-                item.SetQuantity(item.GetQuantity());
+                currItem.SetQuantity(item.GetQuantity());
             }
             else{
                 cout << "Item not found in cart. Nothing modified." << endl;

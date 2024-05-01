@@ -19,28 +19,88 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
    /* Type your code here */
    if (option == 'a')
    {
-      
+      string itemName, itemDescription;
+      int itemPrice, itemQuantity;
+      cout << "Enter the item name:" << endl;
+      getline(cin, itemName);
+      cout << "Enter the item description:" << endl;
+      getline(cin, itemDescription);
+      cout << "Enter the item price:" << endl;
+      cin >> itemPrice;
+      cout << "Enter the item quantity:" << endl;
+      cin >> itemQuantity;
+
+      ItemToPurchase item(itemName, itemDescription, itemPrice, itemQuantity);
+      theCart.AddItem(item);
+
    }
    else if (option == 'd')
    {
+      string itemName;
+      cout  << "REMOVE ITEM FROM CART" << endl
+            << "Enter name of item to remove: " << endl;
+      cin >> itemName;
+      theCart.RemoveItem(itemName);
+   }
+   else if (option == 'c')
+   {
+      string itemName;
+      int newQuantity;
+
+      cout << "CHANGE ITEM QUANTITY" << endl
+      << "Enter the item name: " << endl;
+      cin >> itemName;
+      cout << "Enter the new quantity:" << endl;
+      cin >> newQuantity;
+      ItemToPurchase item;
+      item.SetName(itemName);
+      item.SetQuantity(newQuantity);
+      theCart.ModifyItem(item);
    }
    else if (option == 'i')
    {
+      theCart.PrintDescriptions();
    }
    else if (option == 'o')
    {
+      theCart.PrintTotal();
    }
    else if (option == 'q')
    {
+      return;
    }
    
 }
 
 int main() {
    /* Type your code here */
-   cout << "Enter customer's name: " << endl;
+   string custName;
+   string date;
+   char choice;
 
+   cout << "Enter customer's name: " << endl;
+   getline(cin, custName);
    cout << "Enter today's date:" << endl;
-   
+   getline(cin, date);
+   cout << "Customer name: " << custName << endl;
+   cout << "Today's date: " << date << endl;
+
+   ShoppingCart cart(custName, date);
+
+   while (choice != 'q')
+   {
+      PrintMenu();
+
+      while (choice != 'a' && choice != 'd' 
+         && choice != 'c' && choice != 'i' 
+         && choice != 'o' && choice != 'q')
+      {
+         cout << "Choose an option:" << endl;
+         cin >> choice;
+      }
+
+      ExecuteMenu(choice, cart);
+   }
+
    return 0;
 }
