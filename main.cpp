@@ -56,7 +56,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
 
       cin.ignore();
       cout << "CHANGE ITEM QUANTITY" << endl
-      << "Enter the item name: " << endl;
+      << "Enter the item name:" << endl;
       getline(cin, itemName);
       cout << "Enter the new quantity:" << endl;
       cin >> newQuantity;

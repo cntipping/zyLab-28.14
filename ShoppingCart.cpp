@@ -40,6 +40,7 @@ void ShoppingCart::RemoveItem(string name){
 }
       
 void ShoppingCart::ModifyItem(ItemToPurchase item){
+    string returnStatement;
     for(i = 0; i < cartItems.size(); i++){
         ItemToPurchase& currItem = cartItems.at(i);
 
@@ -53,11 +54,13 @@ void ShoppingCart::ModifyItem(ItemToPurchase item){
             else if(item.GetQuantity() != 0){
                 currItem.SetQuantity(item.GetQuantity());
             }
-            else{
-                cout << "Item not found in cart. Nothing modified." << endl;
-            }
         }
+        else
+        {
+            returnStatement = "Item not found in cart. Nothing modified.";
+        }    
     }
+    cout << returnStatement << endl << endl;
         
 }
       
@@ -97,12 +100,14 @@ void ShoppingCart::PrintTotal(){
 
 void ShoppingCart::PrintDescriptions(){
     if(!cartItems.empty()){
+        cout << "OUTPUT ITEMS' DESCRIPTIONS" << endl;
         cout << GetCustomerName() << "'s Shopping Cart - " << GetDate() << endl;
         cout << endl;
         cout << "Item Descriptions" << endl;
         for(i =0; i < cartItems.size(); i++){
             cartItems[i].PrintItemDescription();
         }
+        cout << endl;
     }
     else{
         cout << "SHOPPING CART IS EMPTY" <<  endl;
