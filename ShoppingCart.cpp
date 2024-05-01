@@ -59,7 +59,11 @@ void ShoppingCart::ModifyItem(ItemToPurchase item){
 }
       
 int ShoppingCart::GetNumItemsInCart(){
-    return cartItems.size();
+    int total = 0;
+    for(ItemToPurchase item : cartItems){
+        total += item.GetQuantity();
+    }
+    return total;
 }
 double ShoppingCart::GetCostOfCart(){
     double total = 0;
