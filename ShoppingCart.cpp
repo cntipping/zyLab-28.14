@@ -3,6 +3,7 @@
 using namespace std;
 
 #include "ShoppingCart.h"
+#include "ItemToPurchase.cpp"
 
 ShoppingCart::ShoppingCart(){
     customerName = "none";
@@ -32,21 +33,23 @@ void ShoppingCart::RemoveItem(string name){
 }
       
 void ShoppingCart::ModifyItem(ItemToPurchase item){
-    if(cartItems[item]){
-        if(cartItems[item].GetDescription() != "none" &&
-        cartItems[item].GetPrice() != 0 &&
-        cartItems[item].GetQuantity() != 0){
-            cin >> itemDescription;
-            cartItems[item].SetDescription(itemDescription);
-            cin >> itemPrice;
-            cartItems[item].SetPrice(itemPrice);
-            cin >> itemQuantity;
-            cartItems[item].SetQuantity(itemQuantity);
+    for(i = 0; i < cartItems.size(); i++){
+        if(cartItems.at(i).GetName() == item.GetName() ){
+            if(item.GetDescription() != "none"){
+                item.SetDescription(item.GetDescription());
+            }
+            else if(item.GetPrice() != 0){
+                item.SetPrice(item.GetPrice());
+            }
+            else if(item.GetQuantity() != 0){
+                item.SetQuantity(item.GetQuantity());
+            }
+            else{
+                cout << "Item not found in cart. Nothing modified." << endl;
+            }
         }
     }
-    else{
-        cout << "Item not found in cart. Nothing modified."
-    }
+        
 }
       
 int ShoppingCart::GetNumItemsInCart(){
@@ -75,6 +78,6 @@ void ShoppingCart::PrintDescriptions(){
     cout << endl;
     cout << "Item Descriptions" << endl;
     for(i =0; i < cartItems.size(); i++){
-        cartItems[i].PrintDescriptions();
+        cartItems[i].PrintItemDescription();
     }
 }
