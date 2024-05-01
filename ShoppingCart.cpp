@@ -30,11 +30,12 @@ void ShoppingCart::RemoveItem(string name){
     if (it->GetName() == name) {
       cartItems.erase(it);
       itemFound = true;
+      cout << endl;
       break;
     }
   }
   if (!itemFound) {
-    cout << "Item not found in cart. Nothing removed." << endl;
+    cout << "Item not found in cart. Nothing removed." << endl << endl;
   }
 }
       
@@ -61,7 +62,12 @@ void ShoppingCart::ModifyItem(ItemToPurchase item){
 }
       
 int ShoppingCart::GetNumItemsInCart(){
-    return cartItems.size();
+    int totalQuantity = 0;
+    for (i = 0; i < cartItems.size(); i++)
+    {
+        totalQuantity += cartItems[i].GetQuantity();
+    }
+    return totalQuantity;
 }
 double ShoppingCart::GetCostOfCart(){
     double total = 0;
@@ -83,10 +89,10 @@ void ShoppingCart::PrintTotal(){
 
     }
     else{
-        cout << "SHOPPING CART IS EMPTY" << endl << endl;
+        cout << "SHOPPING CART IS EMPTY" << endl;
         
     }
-    cout << "Total: $" << GetCostOfCart() << endl << endl;
+    cout << endl << "Total: $" << GetCostOfCart() << endl << endl;
 }
 
 void ShoppingCart::PrintDescriptions(){

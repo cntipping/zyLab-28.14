@@ -24,6 +24,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
    {
       string itemName, itemDescription;
       int itemPrice, itemQuantity;
+      cout<< "ADD ITEM TO CART" << endl;
       cin.ignore();
       cout << "Enter the item name:" << endl;
       getline(cin, itemName);
@@ -33,6 +34,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
       cin >> itemPrice;
       cout << "Enter the item quantity:" << endl;
       cin >> itemQuantity;
+      cout << endl;
 
       ItemToPurchase item(itemName, itemDescription, itemPrice, itemQuantity);
       theCart.AddItem(item);
@@ -42,8 +44,9 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
    {
       string itemName;
       cout  << "REMOVE ITEM FROM CART" << endl
-            << "Enter name of item to remove: " << endl;
-      cin >> itemName;
+            << "Enter name of item to remove:" << endl;
+      cin.ignore();
+      getline(cin, itemName);
       theCart.RemoveItem(itemName);
    }
    else if (option == 'c')
@@ -51,9 +54,10 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
       string itemName;
       int newQuantity;
 
+      cin.ignore();
       cout << "CHANGE ITEM QUANTITY" << endl
       << "Enter the item name: " << endl;
-      cin >> itemName;
+      getline(cin, itemName);
       cout << "Enter the new quantity:" << endl;
       cin >> newQuantity;
       ItemToPurchase item;

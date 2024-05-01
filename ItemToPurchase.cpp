@@ -63,7 +63,7 @@ void ItemToPurchase::PrintItemCost()
     int itemTotal = itemQuantity * itemPrice;
     cout << itemName << " "
          << itemQuantity << " @ $"
-         << itemPrice << " = "
+         << itemPrice << " = $"
          << itemTotal << endl;
 }
 void ItemToPurchase::PrintItemDescription()
