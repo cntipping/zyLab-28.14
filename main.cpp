@@ -1,3 +1,6 @@
+// Git hub link: https://github.com/cntipping/zyLab-28.14
+// Teammates: Cecilia Tipping and Mollie Hamman
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -12,7 +15,7 @@ void PrintMenu() {
    << "c - Change item quantity" << endl
    << "i - Output items' descriptions" << endl
    << "o - Output shopping cart" << endl
-   << "q - Quit" << endl;
+   << "q - Quit" << endl << endl;
 }
 
 void ExecuteMenu(char option, ShoppingCart& theCart) {
@@ -21,6 +24,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
    {
       string itemName, itemDescription;
       int itemPrice, itemQuantity;
+      cin.ignore();
       cout << "Enter the item name:" << endl;
       getline(cin, itemName);
       cout << "Enter the item description:" << endl;
@@ -63,6 +67,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
    }
    else if (option == 'o')
    {
+      cout << "OUTPUT SHOPPING CART" << endl;
       theCart.PrintTotal();
    }
    else if (option == 'q')
@@ -78,12 +83,12 @@ int main() {
    string date;
    char choice;
 
-   cout << "Enter customer's name: " << endl;
+   cout << "Enter customer's name:" << endl;
    getline(cin, custName);
-   cout << "Enter today's date:" << endl;
+   cout << "Enter today's date:" << endl << endl;
    getline(cin, date);
    cout << "Customer name: " << custName << endl;
-   cout << "Today's date: " << date << endl;
+   cout << "Today's date: " << date << endl << endl;
 
    ShoppingCart cart(custName, date);
 
@@ -91,12 +96,17 @@ int main() {
    {
       PrintMenu();
 
-      while (choice != 'a' && choice != 'd' 
-         && choice != 'c' && choice != 'i' 
-         && choice != 'o' && choice != 'q')
+      bool validChoice = false;
+      while (!validChoice)
       {
          cout << "Choose an option:" << endl;
          cin >> choice;
+         if(choice == 'a' || choice == 'd' 
+            || choice == 'c' || choice == 'i' 
+            || choice == 'o' || choice == 'q')
+         {
+            validChoice = true;
+         }
       }
 
       ExecuteMenu(choice, cart);
