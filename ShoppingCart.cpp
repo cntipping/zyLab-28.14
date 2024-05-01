@@ -25,11 +25,17 @@ void ShoppingCart::AddItem(ItemToPurchase item){
     cartItems.push_back(item);
 }
 void ShoppingCart::RemoveItem(string name){
-    for(i = 0; i < cartItems.size(); i++){
-        if(cartItems[i].GetName() == name){
-            cartItems.push_back(cartItems.at(i));
-        }
+  bool itemFound = false;
+  for (auto it = cartItems.begin(); it != cartItems.end(); ++it) {
+    if (it->GetName() == name) {
+      cartItems.erase(it);
+      itemFound = true;
+      break;
     }
+  }
+  if (!itemFound) {
+    std::cout << "Item not found in cart. Nothing removed." << std::endl;
+  }
 }
       
 void ShoppingCart::ModifyItem(ItemToPurchase item){
